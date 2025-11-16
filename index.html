@@ -349,54 +349,11 @@
         transform: scale(1.05);
     }
 
-    /* --- 9. Contact Section (NEW FORM & LINKS) --- */
+    /* --- 9. Contact Section (FIXED LAYOUT) --- */
     .contact-wrapper {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 40px;
-    }
-    
-    .contact-form label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: 500;
-        color: var(--text-med);
-    }
-    
-    .contact-form input,
-    .contact-form textarea {
-        width: 100%;
-        padding: 12px;
-        border-radius: 8px;
-        border: 1px solid var(--border-color);
-        background: var(--bg-dark);
-        color: var(--text-light);
-        font-family: 'Inter', sans-serif;
-        font-size: 1rem;
-        margin-bottom: 20px;
-    }
-    
-    .contact-form textarea {
-        min-height: 120px;
-        resize: vertical;
-    }
-    
-    .btn-submit {
-        display: inline-block;
-        padding: 12px 26px;
-        background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-blue));
-        color: #000;
-        border-radius: 12px;
-        font-weight: 600;
-        text-decoration: none;
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    .btn-submit:hover {
-        transform: scale(1.05);
-        box-shadow: 0 5px 20px rgba(79, 146, 255, 0.4);
     }
     
     .contact-info h3 {
@@ -423,6 +380,71 @@
     .social-links a:hover {
         color: var(--primary-blue);
         transform: scale(1.1);
+    }
+
+    /* --- New Form Styles --- */
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--text-med);
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        background: var(--bg-dark);
+        color: var(--text-light);
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+    }
+    
+    .form-group textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    /* Add margin to the full-width message field */
+    .contact-form .form-group:has(textarea) {
+        margin-top: 20px;
+    }
+    
+    .btn-submit {
+        display: inline-block;
+        padding: 12px 26px;
+        background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-blue));
+        color: #000;
+        border-radius: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 20px; /* Add margin here */
+        align-self: flex-start; /* Align button to the left */
+    }
+    
+    .btn-submit:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 20px rgba(79, 146, 255, 0.4);
     }
 
     /* --- 10. Footer --- */
@@ -513,6 +535,17 @@
       
       .contact-wrapper {
           grid-template-columns: 1fr;
+      }
+
+      /* Stacks the form fields on mobile */
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 0; 
+      }
+      
+      /* Add space between email and message on mobile */
+      .form-grid .form-group:last-child {
+          margin-top: 20px;
       }
     }
   </style>
@@ -755,19 +788,25 @@
             <a href="#" target="_blank" title="Twitter/X"><i class="fab fa-twitter"></i></a>
         </div>
     </div>
-    <form classcom="contact-form">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
-        
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="message">Message</label>
-        <textarea id="message" name="message" required></textarea>
-        
+
+    <form class="contact-form">
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+        </div>
         <button type="submit" class="btn-submit">Send Message</button>
     </form>
-  </div>
+    </div>
 </section>
 
 <footer>
