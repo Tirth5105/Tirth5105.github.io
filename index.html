@@ -161,15 +161,15 @@
       transform: translateY(0);
     }
 
-    /* --- 5. Hero Section (UPDATED) --- */
+    /* --- 5. Hero Section --- */
     .hero {
       display: flex;
-      padding: 120px 60px;
+      padding: 100px 60px;
       justify-content: center;
       align-items: center;
       gap: 80px;
       text-align: left;
-      min-height: 80vh;
+      min-height: 90vh;
       background: none;
       border: none;
       box-shadow: none;
@@ -189,6 +189,11 @@
     .hero img:hover {
         transform: scale(1.05);
         box-shadow: 0 0 40px rgba(122, 184, 255, 0.4);
+    }
+    
+    .hero-text {
+        flex: 1;
+        max-width: 600px;
     }
 
     .hero-text h1 {
@@ -210,10 +215,9 @@
         font-size: 1.1rem;
         color: var(--text-dark);
         font-weight: 500;
-        margin-bottom: 30px; /* Added margin */
+        margin-bottom: 30px;
     }
 
-    /* NEW Button Styles */
     .hero-buttons {
         display: flex;
         gap: 15px;
@@ -252,7 +256,6 @@
         transform: translateY(-3px);
     }
     
-    /* NEW Hero Socials */
     .hero-socials {
         margin-top: 30px;
         display: flex;
@@ -269,6 +272,39 @@
         color: var(--primary-blue);
         transform: scale(1.1);
     }
+
+    .hero-tech-stack {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .hero-tech-stack .tech-label {
+        font-size: 0.9rem;
+        color: var(--text-dark);
+        font-weight: 500;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .hero-tech-stack .tech-icons {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .hero-tech-stack .tech-icon {
+        font-size: 2rem;
+        color: var(--text-med);
+        transition: all 0.3s ease;
+    }
+    
+    .hero-tech-stack .tech-icon:hover {
+        color: var(--primary-blue);
+        transform: scale(1.2);
+    }
+
 
     /* --- 6. Content Sections (About, Education, etc.) --- */
     .content-item {
@@ -555,7 +591,7 @@
         color: var(--text-dark);
     }
 
-    /* --- 9. Contact Section --- */
+    /* --- 9. Contact Section (FIXED LAYOUT) --- */
     .contact-wrapper {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -728,7 +764,7 @@
       }
       
       .hero-text {
-          align-items: center; /* Center hero content on mobile */
+          align-items: center;
           display: flex;
           flex-direction: column;
       }
@@ -738,16 +774,25 @@
       }
       
       .hero-buttons {
-          flex-direction: column; /* Stack buttons on mobile */
+          flex-direction: column;
           width: 100%;
       }
       
       .btn-primary, .btn-secondary {
-          width: 100%; /* Make buttons full-width on mobile */
+          width: 100%;
       }
       
       .hero-socials {
-          justify-content: center; /* Center social icons */
+          justify-content: center;
+      }
+      
+      .hero-tech-stack {
+          align-items: center;
+      }
+      
+      .hero-tech-stack .tech-icons {
+          justify-content: center;
+          flex-wrap: wrap;
       }
 
       .container {
@@ -823,7 +868,18 @@
         <a href="#" target="_blank" title="Twitter/X"><i class="fab fa-twitter"></i></a>
     </div>
 
-  </div>
+    <div class="hero-tech-stack">
+        <p class="tech-label">Core Tech Stack</p>
+        <div class="tech-icons">
+            <i class="fab fa-python tech-icon" title="Python"></i>
+            <i class="fab fa-js-square tech-icon" title="JavaScript"></i>
+            <i class="fas fa-brain tech-icon" title="AI/ML"></i>
+            <i class="fab fa-ethereum tech-icon" title="Blockchain"></i>
+            <i class="fab fa-react tech-icon" title="React"></i>
+            <i class="fab fa-docker tech-icon" title="Docker"></i>
+        </div>
+    </div>
+    </div>
   <img src="assets/profile.jpg" alt="Tirth Patel Profile Picture" />
 </section>
 
@@ -926,7 +982,7 @@
 
     <div class="project-card">
       <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjU1Njd8&ixlib=rb-4.0.3&q=80&w=400" alt="AI project image">
+          <img src="assets/project-ai.jpg" alt="AI project image">
       </div>
       <div class="project-content">
         <h3>AI Energy Optimizer</h3>
@@ -946,7 +1002,7 @@
 
     <div class="project-card">
       <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1621293954908-90f89565b83c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjU2MDR8&ixlib=rb-4.0.3&q=80&w=400" alt="Blockchain project image">
+          <img src="assets/project-blockchain.jpg" alt="Blockchain project image">
       </div>
       <div class="project-content">
         <h3>Blockchain Academic Ledger</h3>
@@ -965,7 +1021,7 @@
 
     <div class="project-card">
       <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1599950755322-21f753d03c9a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjU2MzV8&ixlib=rb-4.0.3&q=80&w=400" alt="Trading project image">
+          <img src="assets/project-trading.jpg" alt="Trading project image">
       </div>
       <div class="project-content">
         <h3>Algo Trading Backtester</h3>
@@ -984,7 +1040,7 @@
     
     <div class="project-card">
       <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1507146153580-69a191769968?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjU2NjZ8&ixlib=rb-4.0.3&q=80&w=400" alt="NLP project image">
+          <img src="assets/project-nlp.jpg" alt="NLP project image">
       </div>
       <div class="project-content">
         <h3>Real-time Sentiment Analyzer</h3>
@@ -1004,7 +1060,7 @@
     
     <div class="project-card">
       <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1517694712202-14261e80e377?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjU2OTJ8&ixlib=rb-4.0.3&q=80&w=400" alt="Web dev project image">
+          <img src="assets/project-queue.jpg" alt="Web dev project image">
       </div>
       <div class="project-content">
         <h3>Distributed Task Queue</h3>
@@ -1030,7 +1086,7 @@
         
         <a href="#" class="article-card">
             <div class="article-image">
-                <img src="https://images.unsplash.com/photo-1640340434855-Abolf06f414a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjU4MzZ8&ixlib=rb-4.0.3&q=80&w=400" alt="DeFi article image">
+                <img src="assets/article-defi.jpg" alt="DeFi article image">
             </div>
             <div class="article-content">
                 <h3>The Future of Decentralized Finance: A 5-Year Outlook</h3>
@@ -1041,7 +1097,7 @@
         
         <a href="#" class="article-card">
             <div class="article-image">
-                <img src="https://images.unsplash.com/photo-1554260570-e66dc38a0328?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjU4Njh8&ixlib=rb-4.0.3&q=80&w=400" alt="Stock market article image">
+                <img src="assets/article-stocks.jpg" alt="Stock market article image">
             </div>
             <div class="article-content">
                 <h3>Training a Neural Network for Stock Market Prediction</h3>
@@ -1052,7 +1108,7 @@
         
         <a href="#" class="article-card">
             <div class="article-image">
-                <img src="https://images.unsplash.com/photo-1516116216624-53e6973c35dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjU5MTJ8&ixlib=rb-4.0.3&q=80&w=400" alt="System design article image">
+                <img src="assets/article-system.jpg" alt="System design article image">
             </div>
             <div class="article-content">
                 <h3>System Design: Architecting a Scalable Microservice</h3>
