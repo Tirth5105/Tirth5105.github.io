@@ -4,125 +4,122 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tirth Patel • Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     body {
       margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: #eef1ff;
-      color: #1b1b1b;
+      font-family: "Inter", sans-serif;
+      background: #0d0f16;
+      color: #e6e6e6;
     }
 
-    /* Navigation */
+    /* NAV */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 60px;
-      background: #ffffff;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      padding: 20px 60px;
+      background: rgba(20, 22, 30, 0.8);
+      backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
       z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     nav .logo {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 700;
-      color: #4b44e3;
+      color: #7ab8ff;
+      letter-spacing: 1px;
     }
 
     nav a {
       margin: 0 16px;
       text-decoration: none;
       font-weight: 500;
-      color: #333;
+      color: #cccccc;
       transition: 0.2s;
     }
 
     nav a:hover {
-      color: #4b44e3;
+      color: #7ab8ff;
     }
 
-    /* Hero */
+    /* HERO */
     .hero {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 100px 20px;
-      gap: 60px;
+      padding: 120px 20px;
+      gap: 80px;
     }
 
     .hero img {
-      width: 250px;
-      height: 250px;
-      border-radius: 20px;
+      width: 260px;
+      height: 260px;
+      border-radius: 22px;
       object-fit: cover;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
     }
 
     .hero-text h1 {
-      font-size: 44px;
-      margin: 0;
-      color: #222;
+      font-size: 48px;
+      color: #ffffff;
+      margin: 0 0 10px 0;
     }
 
     .hero-text p {
       font-size: 18px;
-      opacity: 0.85;
+      opacity: 0.75;
     }
 
     .btn-primary {
       display: inline-block;
-      padding: 12px 24px;
-      background: #4b44e3;
-      color: #fff;
-      border-radius: 10px;
+      padding: 12px 26px;
+      background: linear-gradient(135deg, #4f92ff, #7ab8ff);
+      color: #000;
       font-weight: 600;
+      border-radius: 12px;
       text-decoration: none;
-      margin-top: 18px;
+      margin-top: 20px;
       transition: 0.2s;
     }
 
     .btn-primary:hover {
-      background: #372fd0;
+      filter: brightness(1.15);
     }
 
-    /* Sections */
+    /* SECTION */
     section {
       max-width: 900px;
       margin: 40px auto;
-      background: white;
-      padding: 40px;
-      border-radius: 18px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      background: #141720;
+      padding: 45px;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.07);
     }
 
     h2 {
+      color: #7ab8ff;
       margin-top: 0;
-      color: #4b44e3;
+      font-size: 28px;
     }
 
-    /* Project List */
     .project-list p::before {
-      content: "• ";
-      color: #4b44e3;
-    }
-
-    /* Contact */
-    #contact p {
-      font-size: 17px;
+      content: "▹ ";
+      color: #7ab8ff;
     }
   </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
   <div class="logo">Tirth Patel</div>
   <div>
-    <a href="#intro">Introduction</a>
+    <a href="#intro">Intro</a>
     <a href="#resume">Resume</a>
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
@@ -131,75 +128,56 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <img src="assets/profile.jpg" alt="Tirth Patel" />
+  <img src="assets/profile.jpg" alt="Profile" />
   <div class="hero-text">
     <h1>Tirth Patel</h1>
-    <p>B.Tech Computer Science • PDPU</p>
-    <p>23BCP320 • Surat</p>
-    <a href="#projects" class="btn-primary">View My Work</a>
+    <p>CS Engineer • PDPU • Tech Explorer</p>
+    <p>Developer • Finance Learner • Innovator</p>
+    <a href="#projects" class="btn-primary">Explore Projects</a>
   </div>
 </section>
 
-<!-- INTRODUCTION -->
 <section id="intro">
-  <h2>Introduction & Learning Philosophy</h2>
-  <p>I believe in learning by building — real-world projects teach faster than theory. My approach focuses on clarity, curiosity, and continuous improvement.</p>
+  <h2>About Me</h2>
+  <p>I’m a tech enthusiast who loves AI, blockchain, trading systems, and building products. I believe in learning through experimentation and building real solutions that work.</p>
 </section>
 
-<!-- RESUME -->
 <section id="resume">
-  <h2>Resume / CV</h2>
+  <h2>Resume</h2>
   <p><strong>Education:</strong> B.Tech CSE, PDPU</p>
-  <p><strong>Skills:</strong> Java, C, SQL, HTML, Leadership, Communication</p>
-  <p><strong>Certifications:</strong> Google IT Support, NPTEL</p>
-  <p><strong>LinkedIn:</strong> linkedin.com/in/Tirth5105</p>
-  <p><strong>GitHub:</strong> github.com/tirthpatel</p>
+  <p><strong>Skills:</strong> Java, C, Python, SQL, Linux, Git</p>
+  <p><strong>Certifications:</strong> Google IT Support, NPTEL Cloud, Python</p>
+  <p><strong>Experience:</strong> Intern at XYZ Tech — API engineering & automation</p>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
-  <h2>Interdisciplinary Projects</h2>
+  <h2>Projects</h2>
   <div class="project-list">
-    <p>Smart Energy Optimizer — AI + IoT system reducing power usage by 18%</p>
-    <p>Blockchain Academic Ledger — Immutable certificate verification system</p>
-    <p>Algo-Trading Backtester — Python-based quantitative analysis tool</p>
-    <p>Hospital Queue Manager — Web app reducing patient wait times by 30%</p>
-    <p>Smart Weather Dashboard — API-driven real-time forecasting system</p>
+    <p>AI Energy Optimizer — Machine learning + IoT</p>
+    <p>Blockchain Academic Ledger — Immutable student records</p>
+    <p>Algo Trade Engine — Backtesting + Indicators</p>
+    <p>Hospital Queue Manager — Wait-time reduction</p>
+    <p>Weather Insights Dashboard — Real-time data</p>
   </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
-  <h2>Advanced Skill Development</h2>
-  <p><strong>Programming:</strong> Java, C, Python, SQL, JavaScript</p>
-  <p><strong>Databases:</strong> MySQL, PostgreSQL, MongoDB</p>
-  <p><strong>Tools:</strong> Git, Linux, VS Code, Figma, Docker</p>
-  <p><strong>Soft Skills:</strong> Leadership, Communication, Teamwork, Problem Solving</p>
-  <p><strong>Other:</strong> API Development, Debugging, UI/UX Principles, Data Structures</p>
+  <h2>Skills</h2>
+  <p><strong>Languages:</strong> Java, C, Python, SQL</p>
+  <p><strong>Tools:</strong> Git, Docker, Linux, VS Code</p>
+  <p><strong>Domains:</strong> AI, Blockchain, Quant Finance</p>
 </section>
 
-<!-- FUTURE -->
 <section id="future">
-  <h2>Future Aspirations</h2>
-  <p>I aim to grow in AI, Blockchain, and Quantitative Finance as core specialties.</p>
-  <p>Long-term vision: Architect high-impact, scalable systems and contribute to global tech innovation.</p>
-  <p>Upcoming Goals:</p>
-  <ul>
-    <li>Build a complete algorithmic trading suite</li>
-    <li>Develop AI-driven automation tools</li>
-    <li>Intern at a leading product-based company</li>
-    <li>Create and maintain impactful open-source projects</li>
-    <li>Earn advanced certifications in machine learning</li>
-  </ul>
+  <h2>Future Plans</h2>
+  <p>AI engineer, Blockchain architect, or Quant developer — aiming to create large-scale impactful systems.</p>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <h2>Contact</h2>
-  <p><strong>Email:</strong> tirth7770@gmail.com</p>
-  <p><strong>Phone:</strong> 7573011157</p>
+  <p>Email: tirth7770@gmail.com</p>
+  <p>Phone: 7573011157</p>
 </section>
 
 </body>
