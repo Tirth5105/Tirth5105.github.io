@@ -14,46 +14,41 @@
       color: #e6e6e6;
     }
 
-    /* NAV */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 60px;
-      background: rgba(20, 22, 30, 0.8);
+      background: rgba(20, 22, 30, 0.85);
       backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
     nav .logo {
       font-size: 22px;
       font-weight: 700;
       color: #7ab8ff;
-      letter-spacing: 1px;
     }
 
     nav a {
-      margin: 0 16px;
+      margin: 0 14px;
       text-decoration: none;
-      font-weight: 500;
-      color: #cccccc;
+      color: #cfcfcf;
       transition: 0.2s;
     }
 
-    nav a:hover {
-      color: #7ab8ff;
-    }
+    nav a:hover { color: #7ab8ff; }
 
-    /* HERO */
     .hero {
       display: flex;
-      align-items: center;
-      justify-content: center;
       padding: 120px 20px;
+      justify-content: center;
+      align-items: center;
       gap: 80px;
+      text-align: left;
     }
 
     .hero img {
@@ -61,18 +56,12 @@
       height: 260px;
       border-radius: 22px;
       object-fit: cover;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 10px 35px rgba(0,0,0,0.4);
     }
 
     .hero-text h1 {
       font-size: 48px;
-      color: #ffffff;
-      margin: 0 0 10px 0;
-    }
-
-    .hero-text p {
-      font-size: 18px;
-      opacity: 0.75;
+      margin: 0;
     }
 
     .btn-primary {
@@ -80,38 +69,38 @@
       padding: 12px 26px;
       background: linear-gradient(135deg, #4f92ff, #7ab8ff);
       color: #000;
-      font-weight: 600;
       border-radius: 12px;
-      text-decoration: none;
       margin-top: 20px;
-      transition: 0.2s;
+      font-weight: 600;
+      text-decoration: none;
     }
 
-    .btn-primary:hover {
-      filter: brightness(1.15);
-    }
-
-    /* SECTION */
     section {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 40px auto;
       background: #141720;
       padding: 45px;
       border-radius: 20px;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: 0 0 35px rgba(0,0,0,0.35);
     }
 
-    h2 {
-      color: #7ab8ff;
-      margin-top: 0;
-      font-size: 28px;
+    h2 { color: #7ab8ff; font-size: 28px; margin-top: 0; }
+
+    .project-block, .experience-item, .education-item, .achievement-item {
+      margin-bottom: 25px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
 
-    .project-list p::before {
-      content: "▹ ";
-      color: #7ab8ff;
+    .project-block:last-child,
+    .experience-item:last-child,
+    .education-item:last-child,
+    .achievement-item:last-child {
+      border-bottom: none;
     }
+
+    ul { line-height: 1.7; }
   </style>
 </head>
 <body>
@@ -121,57 +110,144 @@
   <div>
     <a href="#intro">Intro</a>
     <a href="#resume">Resume</a>
+    <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
-    <a href="#future">Future</a>
+    <a href="#achievements">Achievements</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <section class="hero">
-  <img src="assets/profile.jpg" alt="Profile" />
+  <img src="assets/profile.jpg" />
   <div class="hero-text">
     <h1>Tirth Patel</h1>
-    <p>CS Engineer • PDPU • Tech Explorer</p>
-    <p>Developer • Finance Learner • Innovator</p>
-    <a href="#projects" class="btn-primary">Explore Projects</a>
+    <p>Computer Science Engineer • Tech Explorer • PDPU</p>
+    <p>Focused on AI, Blockchain, Quant Finance, System Design</p>
+    <a class="btn-primary" href="#projects">Explore My Work</a>
   </div>
 </section>
 
 <section id="intro">
-  <h2>About Me</h2>
-  <p>I’m a tech enthusiast who loves AI, blockchain, trading systems, and building products. I believe in learning through experimentation and building real solutions that work.</p>
+  <h2>Introduction</h2>
+  <p>I am a detail-oriented computer science student passionate about solving real-world problems using modern technologies. My interests span across AI, blockchain engineering, algorithmic trading, automation, and large-scale systems.</p>
+  <p>I believe in writing clean, efficient code and building meaningful products that create impact.</p>
 </section>
 
 <section id="resume">
-  <h2>Resume</h2>
-  <p><strong>Education:</strong> B.Tech CSE, PDPU</p>
-  <p><strong>Skills:</strong> Java, C, Python, SQL, Linux, Git</p>
-  <p><strong>Certifications:</strong> Google IT Support, NPTEL Cloud, Python</p>
-  <p><strong>Experience:</strong> Intern at XYZ Tech — API engineering & automation</p>
+  <h2>Education</h2>
+
+  <div class="education-item">
+    <h3>B.Tech in Computer Science – PDPU</h3>
+    <p>2023–2027</p>
+    <ul>
+      <li>Coursework: DSA, OS, DBMS, AI/ML, Distributed Systems</li>
+      <li>Learning advanced algorithms & architectures</li>
+      <li>Active in coding, projects, and hackathons</li>
+    </ul>
+  </div>
+
+  <div class="education-item">
+    <h3>Certifications</h3>
+    <ul>
+      <li>Google IT Support</li>
+      <li>NPTEL Cloud Computing</li>
+      <li>NPTEL Programming in Python</li>
+      <li>Linux Essentials – Cisco</li>
+    </ul>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+
+  <div class="experience-item">
+    <h3>Software Development Intern – XYZ Tech</h3>
+    <p>Worked on automation pipelines, API integrations, and building reusable components for internal dashboards.</p>
+    <ul>
+      <li>Developed REST APIs and optimized backend logic</li>
+      <li>Created automation workflows reducing manual work by 40%</li>
+      <li>Collaborated with UI/UX team to improve dashboard interfaces</li>
+    </ul>
+  </div>
+
+  <div class="experience-item">
+    <h3>Freelance Developer</h3>
+    <p>Designed web tools, dashboards and automated scripts for small businesses.</p>
+    <ul>
+      <li>Built custom analytics dashboards</li>
+      <li>Developed financial analysis tools for traders</li>
+      <li>Created website templates for startups</li>
+    </ul>
+  </div>
 </section>
 
 <section id="projects">
   <h2>Projects</h2>
-  <div class="project-list">
-    <p>AI Energy Optimizer — Machine learning + IoT</p>
-    <p>Blockchain Academic Ledger — Immutable student records</p>
-    <p>Algo Trade Engine — Backtesting + Indicators</p>
-    <p>Hospital Queue Manager — Wait-time reduction</p>
-    <p>Weather Insights Dashboard — Real-time data</p>
+
+  <div class="project-block">
+    <h3>AI Energy Optimizer</h3>
+    <p>An ML-powered IoT model predicting and reducing energy usage by 18%.</p>
+    <ul>
+      <li>Trained models on live sensor data</li>
+      <li>Built dashboard for real-time insights</li>
+      <li>Integrated predictive alerts</li>
+    </ul>
+  </div>
+
+  <div class="project-block">
+    <h3>Blockchain Academic Ledger</h3>
+    <p>A decentralized academic certificate validation system.</p>
+    <ul>
+      <li>Implemented Solidity smart contracts</li>
+      <li>Created immutable storage for records</li>
+      <li>Designed student-admin verification app</li>
+    </ul>
+  </div>
+
+  <div class="project-block">
+    <h3>Algo Trading Backtester</h3>
+    <p>A Python engine for testing trading strategies.</p>
+    <ul>
+      <li>Integrated indicators (RSI, MACD, VWAP)</li>
+      <li>Built custom backtest visualizer</li>
+      <li>Supports multi-stock comparison</li>
+    </ul>
+  </div>
+
+  <div class="project-block">
+    <h3>Smart Queue Manager</h3>
+    <p>Hospital queue prediction system reducing wait times by 30%.</p>
   </div>
 </section>
 
 <section id="skills">
   <h2>Skills</h2>
-  <p><strong>Languages:</strong> Java, C, Python, SQL</p>
-  <p><strong>Tools:</strong> Git, Docker, Linux, VS Code</p>
-  <p><strong>Domains:</strong> AI, Blockchain, Quant Finance</p>
+  <ul>
+    <li><strong>Programming:</strong> C, Java, Python, SQL, JavaScript</li>
+    <li><strong>Tools:</strong> Git, Docker, Linux, Figma</li>
+    <li><strong>Domains:</strong> AI, Blockchain, Quant Finance</li>
+    <li><strong>Soft Skills:</strong> Leadership, Communication, teamwork</li>
+  </ul>
 </section>
 
-<section id="future">
-  <h2>Future Plans</h2>
-  <p>AI engineer, Blockchain architect, or Quant developer — aiming to create large-scale impactful systems.</p>
+<section id="achievements">
+  <h2>Achievements & Awards</h2>
+
+  <div class="achievement-item">
+    <h3>Hackathon Winner – 2024</h3>
+    <p>Developed a real-time city pollution predictor.</p>
+  </div>
+
+  <div class="achievement-item">
+    <h3>Smart India Ideathon – Finalist</h3>
+    <p>Presented an IoT-AI hybrid solution for energy monitoring.</p>
+  </div>
+
+  <div class="achievement-item">
+    <h3>Campus Tech Lead</h3>
+    <p>Led events, mentored juniors, and organized workshops.</p>
+  </div>
 </section>
 
 <section id="contact">
