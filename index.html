@@ -161,7 +161,7 @@
       transform: translateY(0);
     }
 
-    /* --- 5. Hero Section --- */
+    /* --- 5. Hero Section (UPDATED) --- */
     .hero {
       display: flex;
       padding: 120px 60px;
@@ -210,24 +210,64 @@
         font-size: 1.1rem;
         color: var(--text-dark);
         font-weight: 500;
+        margin-bottom: 30px; /* Added margin */
     }
 
-    .btn-primary {
+    /* NEW Button Styles */
+    .hero-buttons {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .btn-primary, .btn-secondary {
       display: inline-block;
       padding: 14px 30px;
-      background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-blue));
-      color: #000;
       border-radius: 12px;
-      margin-top: 30px;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-blue));
+      color: #000;
       box-shadow: 0 5px 20px rgba(79, 146, 255, 0.3);
     }
 
     .btn-primary:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 25px rgba(79, 146, 255, 0.5);
+    }
+    
+    .btn-secondary {
+        background: transparent;
+        color: var(--primary-blue);
+        border: 2px solid var(--primary-blue);
+    }
+    
+    .btn-secondary:hover {
+        background: rgba(122, 184, 255, 0.1);
+        transform: translateY(-3px);
+    }
+    
+    /* NEW Hero Socials */
+    .hero-socials {
+        margin-top: 30px;
+        display: flex;
+        gap: 20px;
+    }
+    
+    .hero-socials a {
+        font-size: 1.8rem;
+        color: var(--text-dark);
+        transition: all 0.3s ease;
+    }
+    
+    .hero-socials a:hover {
+        color: var(--primary-blue);
+        transform: scale(1.1);
     }
 
     /* --- 6. Content Sections (About, Education, etc.) --- */
@@ -299,7 +339,7 @@
       border-radius: 15px;
       border: 1px solid var(--border-color);
       transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-      overflow: hidden; /* To contain the image */
+      overflow: hidden;
     }
 
     .project-card:hover {
@@ -311,12 +351,13 @@
     .project-image {
         height: 200px;
         width: 100%;
+        background-color: #0d0f16;
     }
     
     .project-image img {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* Ensures image covers the area */
+        object-fit: cover;
     }
     
     .project-content {
@@ -372,14 +413,14 @@
     }
     
     .article-card {
-        display: flex; /* Changed to flex */
+        display: flex;
         gap: 25px;
         background: rgba(255, 255, 255, 0.03);
         border-radius: 15px;
         border: 1px solid var(--border-color);
         padding: 25px;
         transition: transform 0.3s ease, background 0.3s ease;
-        text-decoration: none; /* Make the whole card a link */
+        text-decoration: none;
     }
     
     .article-card:hover {
@@ -393,6 +434,7 @@
         height: 150px;
         border-radius: 10px;
         overflow: hidden;
+        background-color: #0d0f16;
     }
     
     .article-image img {
@@ -482,7 +524,7 @@
         margin: 0 0 15px 0;
         padding-bottom: 15px;
         border-bottom: 1px solid var(--border-color);
-        flex-grow: 1; /* Pushes author to the bottom */
+        flex-grow: 1;
     }
     
     .testimonial-author {
@@ -684,9 +726,28 @@
         text-align: center;
         padding: 60px 30px;
       }
+      
+      .hero-text {
+          align-items: center; /* Center hero content on mobile */
+          display: flex;
+          flex-direction: column;
+      }
 
       .hero-text h1 {
         font-size: 2.5rem;
+      }
+      
+      .hero-buttons {
+          flex-direction: column; /* Stack buttons on mobile */
+          width: 100%;
+      }
+      
+      .btn-primary, .btn-secondary {
+          width: 100%; /* Make buttons full-width on mobile */
+      }
+      
+      .hero-socials {
+          justify-content: center; /* Center social icons */
       }
 
       .container {
@@ -698,7 +759,6 @@
           font-size: 2rem;
       }
 
-      /* Stack all grids on mobile */
       .project-grid,
       .services-grid,
       .skill-categories,
@@ -708,11 +768,11 @@
       }
       
       .article-card {
-          flex-direction: column; /* Stack article image on top */
+          flex-direction: column;
       }
       
       .article-image {
-          width: 100%; /* Full width for image */
+          width: 100%;
           height: 180px;
       }
 
@@ -751,7 +811,18 @@
     <h1>Tirth Patel</h1>
     <p class="subtitle">Computer Science Engineer</p>
     <p class="focus">Building scalable systems with a focus on AI, Blockchain, and Quantitative Finance.</p>
-    <a class="btn-primary" href="#projects">Explore My Work</a>
+    
+    <div class="hero-buttons">
+        <a class="btn-primary" href="#projects">Explore My Work</a>
+        <a class="btn-secondary" href="#contact">Contact Me</a>
+    </div>
+    
+    <div class="hero-socials">
+        <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" target="_blank" title="Twitter/X"><i class="fab fa-twitter"></i></a>
+    </div>
+
   </div>
   <img src="assets/profile.jpg" alt="Tirth Patel Profile Picture" />
 </section>
