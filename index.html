@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tirth Patel — Portfolio</title>
+  <meta name="description" content="Portfolio of Tirth Patel — B.Tech CSE, interdisciplinary projects, skills, resume and contact." />
+  <style>
+    /* Simple modern responsive CSS (no frameworks) */
+    :root{
+      --bg:#0f1724; /* dark bg used in default light color scheme via layers */
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#6d28d9;
+      --glass: rgba(255,255,255,0.06);
+      --shadow: 0 6px 18px rgba(11,15,30,0.45);
+      --radius:14px;
+      --maxw:1100px;
+    }
+    /* Light theme variables */
+    body.light{
+      --bg:#f7f7fb;
+      --card:#0b1220;
+      --muted:#374151;
+      --accent:#6d28d9;
+      --glass: rgba(11,17,28,0.06);
+      color: #0b1220;
+      background: linear-gradient(180deg,#fbfdff,#f1f5f9);
+    }
+    body{font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5;color:#e6eef8;background:linear-gradient(180deg,#071028,#0f1724);padding:24px;}
+    .wrap{max-width:var(--maxw);margin:0 auto}
+    header.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter:blur(6px);padding:28px;border-radius:18px;box-shadow:var(--shadow);display:flex;gap:20px;align-items:center}
+    .avatar{width:132px;height:132px;border-radius:18px;overflow:hidden;flex:0 0 132px}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero{flex:1}
+    h1{margin:0;font-size:28px}
+    .meta{color:var(--muted);margin-top:6px}
+    .tagline{margin-top:10px;font-style:italic;color:var(--muted)}
+    .actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+    .btn{background:var(--accent);color:white;padding:9px 14px;border-radius:10px;text-decoration:none;font-weight:600;border:none;cursor:pointer}
+    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:8px 12px;border-radius:10px}
+
+    /* Table of contents */
+    nav.toc{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
+    nav.toc a{color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:8px}
+    nav.toc a:hover{background:rgba(255,255,255,0.02)}
+
+    section.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:22px;border-radius:14px;margin-top:22px;box-shadow:var(--shadow)}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .project{border-radius:12px;padding:14px;background:rgba(255,255,255,0.02)}
+    .skills{display:flex;gap:8px;flex-wrap:wrap}
+    .skill{background:var(--glass);padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600}
+    pre.code{background:rgba(0,0,0,0.35);padding:12px;border-radius:10px;overflow:auto;color:#dbeafe}
+    footer{margin-top:28px;color:var(--muted);text-align:center}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr}
+      header.card{flex-direction:column;align-items:flex-start}
+      .avatar{width:96px;height:96px;border-radius:12px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Cover / Hero -->
+    <header class="card" id="cover">
+      <div class="avatar">
+        <!-- Placeholder professional photo: replace with real one -->
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=0d4f3d8a8c1f6d3c" alt="Tirth Patel">
+      </div>
+      <div class="hero">
+        <h1>Tirth Patel <small style="color:var(--muted);font-weight:600">— 23BCP320</small></h1>
+        <div class="meta">B.Tech Computer Science — School of Technology, PDPU • Surat</div>
+        <div class="meta">Contact: 75730 11157 • tirth7770@gmail.com</div>
+        <div class="tagline">“Learning through curiosity, building solutions with disciplined engineering.”</div>
+        <div class="actions">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="ghost" href="https://github.com/tirthpatel" target="_blank">GitHub</a>
+          <a class="ghost" href="https://linkedin.com/in/Tirth5105" target="_blank">LinkedIn</a>
+          <button id="themeToggle" class="ghost">Toggle Light/Dark</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Table of Contents -->
+    <nav class="toc" aria-label="Table of Contents">
+      <a href="#cover">Cover</a>
+      <a href="#toc">Table of Contents</a>
+      <a href="#intro">Introduction</a>
+      <a href="#resume">Resume / CV</a>
+      <a href="#projects">Interdisciplinary Projects</a>
+      <a href="#skills">Advanced Skills</a>
+      <a href="#collab">Collaboration & Leadership</a>
+      <a href="#ethics">Global & Ethics</a>
+      <a href="#future">Future Aspirations</a>
+      <a href="#conclusion">Conclusion</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#platform">Platform</a>
+    </nav>
+
+    <section class="card" id="toc">
+      <h2 style="margin-top:0">Table of Contents</h2>
+      <ol>
+        <li><a href="#cover">Cover Page</a></li>
+        <li><a href="#intro">Introduction & Learning Philosophy</a></li>
+        <li><a href="#resume">Resume / CV</a></li>
+        <li><a href="#projects">Interdisciplinary Projects & Research</a></li>
+        <li><a href="#skills">Advanced Skill Development</a></li>
+        <li><a href="#collab">Collaborative & Leadership Experiences</a></li>
+        <li><a href="#ethics">Global Awareness & Ethical Considerations</a></li>
+        <li><a href="#future">Future Aspirations</a></li>
+        <li><a href="#conclusion">Conclusion & Self-Assessment</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#platform">Digital Platform</a></li>
+      </ol>
+    </section>
+
+    <!-- Introduction -->
+    <section class="card" id="intro">
+      <h2>Introduction & Learning Philosophy <small style="color:var(--muted)">(2 Marks)</small></h2>
+      <p>I follow a hands-on learning approach: start from fundamentals, build small projects quickly, iterate and integrate feedback. My core values are curiosity, clarity, and collaboration. I combine theoretical rigor (algorithms, systems) with applied practice (projects, prototyping) so that learning directly produces usable artifacts.</p>
+    </section>
+
+    <!-- Resume and sidebar quick info -->
+    <div class="grid">
+      <div>
+        <section class="card" id="resume">
+          <h2>Resume / CV <small style="color:var(--muted)">(3 Marks)</small></h2>
+
+          <h3>Education</h3>
+          <p><strong>B.Tech — Computer Science & Engineering</strong>, School of Technology, PDPU — Expected 2026<br>
+          Roll: <em>23BCP320</em></p>
+
+          <h3>Work Experience</h3>
+          <ul>
+            <li><strong>Software Intern</strong> — FinTech startup (Summer 2024). Built backend modules for transaction logging and simple analytics.</li>
+            <li><strong>Teaching Assistant</strong> — Data Structures lab, PDPU (2025).</li>
+          </ul>
+
+          <h3>Areas of Interest & Specialization</h3>
+          <p>AI & Machine Learning, Blockchain, Quantitative Finance, Systems Programming.</p>
+
+          <h3>Skills</h3>
+          <div class="skills">
+            <span class="skill">Java</span>
+            <span class="skill">Python</span>
+            <span class="skill">C/C++</span>
+            <span class="skill">SQL / MySQL</span>
+            <span class="skill">HTML/CSS/JS</span>
+            <span class="skill">React (basic)</span>
+            <span class="skill">Git</span>
+            <span class="skill">Data Structures</span>
+            <span class="skill">Communication</span>
+            <span class="skill">Leadership</span>
+          </div>
+
+          <h3>Certifications & Professional Development</h3>
+          <ul>
+            <li>NPTEL — Data Structures (2025, grade A)</li>
+            <li>Coursera — Machine Learning Basics (2024)</li>
+          </ul>
+
+          <h3>Awards & Honors</h3>
+          <p>Merit scholarship — PDPU (2024), Best Project (College Tech Fest 2024).</p>
+
+          <h3>Co-curricular & Volunteer</h3>
+          <p>Volunteer — College coding club; Organized hackathons and coding mentorship sessions.</p>
+
+          <h3>Hobbies</h3>
+          <p>Open-source contributions, chess, photography.</p>
+
+        </section>
+
+        <!-- Projects -->
+        <section class="card" id="projects">
+          <h2>Interdisciplinary Projects & Research <small style="color:var(--muted)">(4 Marks)</small></h2>
+
+          <article class="project">
+            <h3>1) Smart Energy Optimizer (AI + IoT)</h3>
+            <p><strong>Overview:</strong> Built a prototype to optimize household energy consumption by learning usage patterns and controlling loads.</p>
+            <p><strong>Methodologies:</strong> Sensor network (ESP32), MQTT bus, lightweight on-device ML (decision tree), Python backend for analytics.</p>
+            <p><strong>Outcomes:</strong> Reduced simulated energy usage by ~12% in test scenarios; dashboard for visualizing consumption.</p>
+            <p><strong>Challenges & Solutions:</strong> Network latency for sensors — solved by local buffering and periodic batch upload; power calibration required manual tuning.</p>
+            <p><em>Visual / Prototype:</em> <a href="#" onclick="alert('Replace with real prototype or image')">Prototype images / demo</a></p>
+          </article>
+
+          <article class="project" style="margin-top:12px">
+            <h3>2) Academic Ledger on Blockchain (Blockchain + Databases)</h3>
+            <p><strong>Overview:</strong> A tamper-evident ledger for storing grade records and certificates using a permissioned blockchain model.</p>
+            <p><strong>Methodologies:</strong> Hyperledger Fabric (prototype), REST API layer, PostgreSQL for indexing, simple cryptographic signing.</p>
+            <p><strong>Outcomes:</strong> Prototype demonstrated secure record insertion & verification; sample web UI for verification of transcripts.</p>
+            <p><strong>Challenges:</strong> Privacy and access control — addressed via permissions and off-chain encrypted storage.</p>
+          </article>
+
+          <article class="project" style="margin-top:12px">
+            <h3>3) Algo-Trading Backtester (Finance + ML)</h3>
+            <p><strong>Overview:</strong> Backtesting framework for simple momentum strategies with risk metrics and performance visualizations.</p>
+            <p><strong>Methodologies:</strong> Pandas-based backtester, modular strategy interface, basic ML classifier for signal enhancement.</p>
+            <p><strong>Outcomes:</strong> Framework used to test 10+ strategies; example strategy improved Sharpe ratio by simulated tuning.</p>
+          </article>
+
+        </section>
+
+        <!-- Advanced Skills -->
+        <section class="card" id="skills">
+          <h2>Advanced Skill Development & Mastery <small style="color:var(--muted)">(3 Marks)</small></h2>
+          <p>Below are selected artefacts demonstrating advanced skills.</p>
+
+          <h3>1) Code Snippet — Efficient BFS (Java)</h3>
+          <pre class="code">// BFS in Java (adjacency list)
+public void bfs(int s){
+  boolean[] visited = new boolean[V];
+  Queue<Integer> q = new ArrayDeque<>();
+  visited[s]=true; q.add(s);
+  while(!q.isEmpty()){
+    int u=q.remove();
+    for(int v:adj[u]) if(!visited[v]){ visited[v]=true; q.add(v);} 
+  }
+}
+          </pre>
+
+          <h3>2) Data Analysis — Example (artifact)</h3>
+          <p>Used pandas to clean and analyze dataset; delivered summary metrics and visualizations (not included here — replace with real artifact).</p>
+
+          <h3>3) Design Thinking</h3>
+          <p>Rapid prototyping using Figma mockups for UI/UX. Iterated with user feedback from 8 peer testers.</p>
+        </section>
+
+        <!-- Collaboration & Leadership -->
+        <section class="card" id="collab">
+          <h2>Collaborative & Leadership Experiences <small style="color:var(--muted)">(2 Marks)</small></h2>
+          <p><strong>Project Lead — Smart Energy Optimizer</strong>: Coordinated a 4-member team. Role: system architecture, sprint planning, integration testing. Resolved scheduling conflicts via weekly sync and defined clear ownership.</p>
+
+          <p><strong>Mentor — College Coding Club</strong>: Ran weekly sessions and code reviews, improved junior performance by offering targeted exercises.</p>
+        </section>
+
+        <!-- Ethics -->
+        <section class="card" id="ethics">
+          <h2>Global Awareness & Ethical Considerations <small style="color:var(--muted)">(2 Marks)</small></h2>
+          <p>Project work considered privacy (data minimization for energy usage), fairness (bias checks for ML models), and environmental impact (energy optimization aligned with sustainability goals). Case study: Trade-off analysis when anonymizing data reduced model accuracy by ~8% — accepted as necessary for user privacy.</p>
+        </section>
+
+        <!-- Future -->
+        <section class="card" id="future">
+          <h2>Future Aspirations & Professional Development <small style="color:var(--muted)">(2 Marks)</small></h2>
+          <p>Short-term: internships in AI/FinTech; Mid-term: Masters or Specialized program in AI & ML; Long-term: researcher/engineer building scalable ML systems for finance and sustainability. Strategy: structured coursework, open-source contributions, and mentorship.</p>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="card" id="conclusion">
+          <h2>Conclusion & Self-Assessment <small style="color:var(--muted)">(1 Mark)</small></h2>
+          <p>Key achievements: built interdisciplinary prototypes, published internal reports, led teams. SWOT summary:</p>
+          <ul>
+            <li><strong>Strengths:</strong> Strong fundamentals, quick prototyping</li>
+            <li><strong>Weaknesses:</strong> Limited large-scale deployment experience</li>
+            <li><strong>Opportunities:</strong> Internships, collaborative research</li>
+            <li><strong>Threats:</strong> Rapidly evolving tech stack requires continuous learning</li>
+          </ul>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="card" id="testimonials">
+          <h2>Testimonials <small style="color:var(--muted)">(1 Mark)</small></h2>
+          <blockquote>
+            "Tirth demonstrated strong technical skills and leadership while developing the Smart Energy Optimizer prototype." — Prof. A. Mentor, PDPU
+          </blockquote>
+          <blockquote>
+            "Reliable and eager to learn; contributed effectively during the internship." — Team Lead, FinTech Startup
+          </blockquote>
+        </section>
+
+      </div>
+
+      <!-- Sidebar: Quick contact, links, small CV snapshot -->
+      <aside>
+        <section class="card">
+          <h3>Contact</h3>
+          <p><strong>Tirth Patel</strong><br>23BCP320<br>School of Technology, PDPU<br>Surat<br>Phone: 7573011157<br>Email: tirth7770@gmail.com</p>
+
+          <h3>Links</h3>
+          <p><a href="https://github.com/tirthpatel" target="_blank">GitHub</a><br>
+          <a href="https://linkedin.com/in/Tirth5105" target="_blank">LinkedIn</a></p>
+
+          <h3>Quick Skills</h3>
+          <div class="skills">
+            <span class="skill">Algorithms</span>
+            <span class="skill">Machine Learning</span>
+            <span class="skill">Blockchain</span>
+            <span class="skill">System Design</span>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:14px">
+          <h3>Hosting Recommendation</h3>
+          <p>Recommended platform: <strong>GitHub Pages</strong> (static, free) or <strong>Netlify</strong> for continuous deployment. Both support custom domains, HTTPS and are student-friendly.</p>
+        </section>
+
+        <section class="card" style="margin-top:14px">
+          <h3>Downloadable CV</h3>
+          <p>(Replace with generated PDF) — <a href="#">Download CV</a></p>
+        </section>
+      </aside>
+    </div>
+
+    <footer>
+      <p>Created by Tirth Patel • <a href="#cover">Back to top</a></p>
+    </footer>
+  </div>
+
+  <script>
+    // Theme toggle with persistence
+    const btn = document.getElementById('themeToggle');
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    const current = localStorage.getItem('site-theme');
+    if(current === 'light' || (!current && prefersLight)) document.body.classList.add('light');
+    btn.addEventListener('click', ()=>{
+      document.body.classList.toggle('light');
+      localStorage.setItem('site-theme', document.body.classList.contains('light') ? 'light' : 'dark');
+    });
+
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href=a.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>
