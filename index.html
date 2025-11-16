@@ -84,6 +84,11 @@
       font-weight: 700;
     }
 
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
     /* --- 3. Navigation Bar --- */
     nav {
       display: flex;
@@ -110,14 +115,14 @@
     }
 
     nav .nav-links a {
-      margin: 0 14px; /* Reduced margin to fit new links */
+      margin: 0 14px;
       color: var(--text-med);
       font-weight: 500;
       font-size: 1rem;
       transition: all 0.3s ease;
       padding: 5px 0;
       border-bottom: 2px solid transparent;
-      white-space: nowrap; /* Prevents links from wrapping */
+      white-space: nowrap;
     }
 
     nav .nav-links a:hover {
@@ -146,13 +151,11 @@
       border: 1px solid var(--border-color);
       box-shadow: 0 10px 40px var(--shadow-color);
       
-      /* --- DYNAMIC TRANSITION --- */
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
     
-    /* --- FADE-IN ANIMATION CLASS --- */
     .container.visible {
       opacity: 1;
       transform: translateY(0);
@@ -252,7 +255,7 @@
         color: var(--text-dark);
     }
 
-    /* --- NEW: What I Offer Section --- */
+    /* --- What I Offer Section --- */
     .services-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -284,7 +287,7 @@
         margin-bottom: 10px;
     }
 
-    /* --- 7. Projects Section --- */
+    /* --- 7. Projects Section (with Images) --- */
     .project-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -295,8 +298,8 @@
       background: rgba(255, 255, 255, 0.03);
       border-radius: 15px;
       border: 1px solid var(--border-color);
-      padding: 25px;
       transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden; /* To contain the image */
     }
 
     .project-card:hover {
@@ -304,9 +307,25 @@
       background: rgba(255, 255, 255, 0.05);
       box-shadow: 0 15px 30px var(--shadow-color);
     }
+    
+    .project-image {
+        height: 200px;
+        width: 100%;
+    }
+    
+    .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures image covers the area */
+    }
+    
+    .project-content {
+        padding: 25px;
+    }
 
-    .project-card h3 {
+    .project-content h3 {
       color: var(--primary-blue);
+      font-size: 1.4rem;
     }
     
     .project-tags {
@@ -345,7 +364,7 @@
         color: var(--primary-blue);
     }
     
-    /* --- NEW: Articles Section --- */
+    /* --- Articles Section (Restyled with Images) --- */
     .article-grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -353,12 +372,14 @@
     }
     
     .article-card {
-        display: block;
+        display: flex; /* Changed to flex */
+        gap: 25px;
         background: rgba(255, 255, 255, 0.03);
         border-radius: 15px;
         border: 1px solid var(--border-color);
         padding: 25px;
         transition: transform 0.3s ease, background 0.3s ease;
+        text-decoration: none; /* Make the whole card a link */
     }
     
     .article-card:hover {
@@ -366,15 +387,39 @@
         background: rgba(255, 255, 255, 0.05);
     }
     
-    .article-card h3 {
-        color: var(--primary-blue);
-        margin-bottom: 10px;
+    .article-image {
+        flex-shrink: 0;
+        width: 220px;
+        height: 150px;
+        border-radius: 10px;
+        overflow: hidden;
     }
     
-    .article-card .article-meta {
+    .article-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .article-content {
+        flex: 1;
+    }
+    
+    .article-content h3 {
+        color: var(--primary-blue);
+        margin-bottom: 10px;
+        font-size: 1.4rem;
+    }
+    
+    .article-content .article-meta {
         font-size: 0.9rem;
         color: var(--text-dark);
         margin-bottom: 10px;
+    }
+    
+    .article-content p {
+        color: var(--text-med);
+        margin-bottom: 0;
     }
 
     /* --- 8. Skills Section --- */
@@ -414,7 +459,7 @@
         transform: scale(1.05);
     }
     
-    /* --- NEW: Testimonials Section --- */
+    /* --- Testimonials Section (with Avatars) --- */
     .testimonial-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -426,6 +471,8 @@
         padding: 30px;
         border-radius: 15px;
         border-left: 4px solid var(--primary-blue);
+        display: flex;
+        flex-direction: column;
     }
     
     .testimonial-card blockquote {
@@ -433,16 +480,37 @@
         font-style: italic;
         color: var(--text-light);
         margin: 0 0 15px 0;
-        border-bottom: 1px solid var(--border-color);
         padding-bottom: 15px;
+        border-bottom: 1px solid var(--border-color);
+        flex-grow: 1; /* Pushes author to the bottom */
     }
     
-    .testimonial-card cite {
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 10px;
+    }
+    
+    .testimonial-author img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    
+    .testimonial-author cite {
         font-style: normal;
         font-weight: 600;
         color: var(--text-med);
+        line-height: 1.3;
+    }
+    
+    .testimonial-author cite span {
         display: block;
-        text-align: right;
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: var(--text-dark);
     }
 
     /* --- 9. Contact Section --- */
@@ -554,7 +622,7 @@
     /* --- 11. Responsive Design --- */
     @media (max-width: 1100px) {
         nav .nav-links a {
-            margin: 0 10px; /* Tighter spacing on medium screens */
+            margin: 0 10px;
         }
     }
     
@@ -573,7 +641,6 @@
             font-size: 1.25rem;
         }
         
-        /* Stack new grids on medium screens */
         .testimonial-grid {
             grid-template-columns: 1fr;
         }
@@ -632,18 +699,23 @@
       }
 
       /* Stack all grids on mobile */
-      .project-grid {
+      .project-grid,
+      .services-grid,
+      .skill-categories,
+      .contact-wrapper,
+      .testimonial-grid {
         grid-template-columns: 1fr;
       }
-      .services-grid {
-          grid-template-columns: 1fr;
+      
+      .article-card {
+          flex-direction: column; /* Stack article image on top */
       }
-      .skill-categories {
-          grid-template-columns: 1fr;
+      
+      .article-image {
+          width: 100%; /* Full width for image */
+          height: 180px;
       }
-      .contact-wrapper {
-          grid-template-columns: 1fr;
-      }
+
       .form-grid {
         grid-template-columns: 1fr;
         gap: 0; 
@@ -686,7 +758,7 @@
 
 <section class="container" id="about">
   <h2>About Me</h2>
-  <p>I am a detail-oriented computer science student at PDPU, passionate about solving complex real-world problems using modern technologies. My core interests lie at the intersection of several emerging fields, including Artificial Intelligence, Blockchain Engineering, AlgorithE-mic Trading, and large-scale System Design.</p>
+  <p>I am a detail-oriented computer science student at PDPU, passionate about solving complex real-world problems using modern technologies. My core interests lie at the intersection of several emerging fields, including **Artificial Intelligence**, **Blockchain Engineering**, **Algorithmic Trading**, and large-scale **System Design**.</p>
   <p>I thrive in fast-paced environments where I can leverage my skills to write clean, efficient, and scalable code. My goal is to build meaningful products that create a tangible impact, whether it's optimizing a system for performance or architecting a new decentralized application from the ground up.</p>
 </section>
 
@@ -722,7 +794,7 @@
     <h3>B.Tech in Computer Science <span class="date">2023–2027</span></h3>
     <h4>Pandit Deendayal Energy University (PDPU)</h4>
     <ul>
-      <li>Relevant Coursework: Data Structures & Algorithms, Operating Systems, DBMS, AI/ML, Distributed Systems</li>
+      <li>**Relevant Coursework:** Data Structures & Algorithms, Operating Systems, DBMS, AI/ML, Distributed Systems</li>
       <li>Actively learning advanced algorithms, system architectures, and software engineering principles.</li>
       <li>Consistent participant in hackathons, coding competitions, and technical workshops.</li>
     </ul>
@@ -741,6 +813,7 @@
 
 <section class="container" id="experience">
   <h2>Experience</h2>
+  
   <div class="content-item">
     <h3>Software Development Intern <span class="date">Summer 2025</span></h3>
     <h4>Zenn Tech Solutions</h4>
@@ -752,6 +825,7 @@
       <li>Collaborated with the UI/UX team to refactor and improve frontend dashboard interfaces.</li>
     </ul>
   </div>
+
   <div class="content-item">
     <h3>Freelance Developer <span class="date">2024–Present</span></h3>
     <h4>Self-Employed</h4>
@@ -762,67 +836,160 @@
       <li>Created responsive website templates and components for early-stage startups.</li>
     </ul>
   </div>
+  
+  <div class="content-item">
+    <h3>Teaching Assistant (Data Structures) <span class="date">2024</span></h3>
+    <h4>Pandit Deendayal Energy University (PDPU)</h4>
+    <p>Assisted Professor K. Sharma with a class of 60 sophomore students for the Data Structures & Algorithms course.</p>
+    <ul>
+      <li>Led weekly lab sessions on topics like trees, graphs, and dynamic programming.</li>
+      <li>Graded assignments and provided one-on-one mentorship to students, improving average class scores by 15%.</li>
+      <li>Developed supplementary-learning materials and code examples to simplify complex concepts.</li>
+    </ul>
+  </div>
 </section>
 
 <section class="container" id="projects">
   <h2>Projects</h2>
   <div class="project-grid">
+
     <div class="project-card">
-      <h3>AI Energy Optimizer</h3>
-      <p>An ML-powered IoT model that predicts and reduces building energy usage, achieving an 18% reduction in test environments.</p>
-      <div class="project-tags">
-        <span class="tag">Python</span>
-        <span class="tag">TensorFlow</span>
-        <span class="tag">IoT</span>
-        <span class="tag">Flask</span>
+      <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjU1Njd8&ixlib=rb-4.0.3&q=80&w=400" alt="AI project image">
       </div>
-      <div class="project-links">
-        <a href="#"><i class="fab fa-github"></i> View Code</a>
-        <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+      <div class="project-content">
+        <h3>AI Energy Optimizer</h3>
+        <p>An ML-powered IoT model that predicts and reduces building energy usage by 18%.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">TensorFlow</span>
+          <span class="tag">IoT</span>
+          <span class="tag">Flask</span>
+        </div>
+        <div class="project-links">
+          <a href="#"><i class="fab fa-github"></i> View Code</a>
+          <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+        </div>
       </div>
     </div>
+
     <div class="project-card">
-      <h3>Blockchain Academic Ledger</h3>
-      <p>A decentralized application (dApp) for validating and storing academic certificates immutably on the blockchain.</p>
-      <div class="project-tags">
-        <span class="tag">Solidity</span>
-        <span class="tag">Hardhat</span>
-        <span class="tag">React</span>
-        <span class="tag">Ethers.js</span>
+      <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1621293954908-90f89565b83c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjU2MDR8&ixlib=rb-4.0.3&q=80&w=400" alt="Blockchain project image">
       </div>
-      <div class="project-links">
-        <a href="#"><i class="fab fa-github"></i> View Code</a>
+      <div class="project-content">
+        <h3>Blockchain Academic Ledger</h3>
+        <p>A decentralized (dApp) for validating and storing academic certificates on the blockchain.</p>
+        <div class="project-tags">
+          <span class="tag">Solidity</span>
+          <span class="tag">Hardhat</span>
+          <span class="tag">React</span>
+          <span class="tag">Ethers.js</span>
+        </div>
+        <div class="project-links">
+          <a href="#"><i class="fab fa-github"></i> View Code</a>
+        </div>
       </div>
     </div>
+
     <div class="project-card">
-      <h3>Algo Trading Backtester</h3>
-      <p>A high-performance Python engine for backtesting and visualizing quantitative trading strategies against historical market data.</p>
-      <div class="project-tags">
-        <span class="tag">Python</span>
-        <span class="tag">Pandas</span>
-        <span class="tag">NumPy</span>
-        <span class="tag">Plotly</span>
+      <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1599950755322-21f753d03c9a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjU2MzV8&ixlib=rb-4.0.3&q=80&w=400" alt="Trading project image">
       </div>
-      <div class="project-links">
-        <a href="#"><i class="fab fa-github"></i> View Code</a>
+      <div class="project-content">
+        <h3>Algo Trading Backtester</h3>
+        <p>A high-performance Python engine for backtesting and visualizing quantitative trading strategies.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">Plotly</span>
+        </div>
+        <div class="project-links">
+          <a href="#"><i class="fab fa-github"></i> View Code</a>
+        </div>
       </div>
     </div>
+    
+    <div class="project-card">
+      <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1507146153580-69a191769968?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjU2NjZ8&ixlib=rb-4.0.3&q=80&w=400" alt="NLP project image">
+      </div>
+      <div class="project-content">
+        <h3>Real-time Sentiment Analyzer</h3>
+        <p>A web app that scrapes live social media data and performs sentiment analysis using a custom-trained NLP model.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Hugging Face</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">React</span>
+        </div>
+        <div class="project-links">
+          <a href="#"><i class="fab fa-github"></i> View Code</a>
+          <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="project-card">
+      <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1517694712202-14261e80e377?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjU2OTJ8&ixlib=rb-4.0.3&q=80&w=400" alt="Web dev project image">
+      </div>
+      <div class="project-content">
+        <h3>Distributed Task Queue</h3>
+        <p>A scalable task-queue system built with RabbitMQ and Celery for processing asynchronous background jobs.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Celery</span>
+          <span class="tag">RabbitMQ</span>
+          <span class="tag">Docker</span>
+        </div>
+        <div class="project-links">
+          <a href="#"><i class="fab fa-github"></i> View Code</a>
+        </div>
+      </div>
+    </div>
+    
   </div>
 </section>
 
 <section class="container" id="articles">
     <h2>Featured Articles</h2>
     <div class="article-grid">
+        
         <a href="#" class="article-card">
-            <h3>The Future of Decentralized Finance: A 5-Year Outlook</h3>
-            <p class="article-meta">Oct 28, 2025 • 8 min read</p>
-            <p>Exploring the trends in DeFi, from layer 2 scaling solutions to the integration of AI in smart contracts...</p>
+            <div class="article-image">
+                <img src="https://images.unsplash.com/photo-1640340434855-Abolf06f414a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjU4MzZ8&ixlib=rb-4.0.3&q=80&w=400" alt="DeFi article image">
+            </div>
+            <div class="article-content">
+                <h3>The Future of Decentralized Finance: A 5-Year Outlook</h3>
+                <p class="article-meta">Oct 28, 2025 • 8 min read</p>
+                <p>Exploring the trends in DeFi, from layer 2 scaling solutions to the integration of AI in smart contracts...</p>
+            </div>
         </a>
+        
         <a href="#" class="article-card">
-            <h3>Training a Neural Network for Stock Market Prediction</h3>
-            <p class="article-meta">Sep 15, 2025 • 12 min read</p>
-            <p>A deep dive into using LSTMs and time-series data to build and backtest a predictive model for market movements...</p>
+            <div class="article-image">
+                <img src="https://images.unsplash.com/photo-1554260570-e66dc38a0328?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjU4Njh8&ixlib=rb-4.0.3&q=80&w=400" alt="Stock market article image">
+            </div>
+            <div class="article-content">
+                <h3>Training a Neural Network for Stock Market Prediction</h3>
+                <p class="article-meta">Sep 15, 2025 • 12 min read</p>
+                <p>A deep dive into using LSTMs and time-series data to build and backtest a predictive model for market movements...</p>
+            </div>
         </a>
+        
+        <a href="#" class="article-card">
+            <div class="article-image">
+                <img src="https://images.unsplash.com/photo-1516116216624-53e6973c35dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjU5MTJ8&ixlib=rb-4.0.3&q=80&w=400" alt="System design article image">
+            </div>
+            <div class="article-content">
+                <h3>System Design: Architecting a Scalable Microservice</h3>
+                <p class="article-meta">Aug 02, 2025 • 10 min read</p>
+                <p>From API gateways to message brokers, a practical guide on designing a system that won't crash under load...</p>
+            </div>
+        </a>
+        
     </div>
 </section>
 
@@ -835,9 +1002,11 @@
         <span class="skill-item">Python</span>
         <span class="skill-item">Java</span>
         <span class="skill-item">JavaScript (ES6+)</span>
+        <span class="skill-item">C/C++</span>
         <span class="skill-item">Solidity</span>
         <span class="skill-item">SQL (PostgreSQL)</span>
         <span class="skill-item">MongoDB</span>
+        <span class="skill-item">Redis</span>
       </div>
     </div>
     <div class="skill-category">
@@ -846,9 +1015,11 @@
         <span class="skill-item">React</span>
         <span class="skill-item">Node.js</span>
         <span class="skill-item">TensorFlow</span>
+        <span class="skill-item">PyTorch</span>
         <span class="skill-item">Pandas</span>
         <span class="skill-item">Ethers.js</span>
         <span class="skill-item">Hardhat</span>
+        <span class="skill-item">FastAPI</span>
       </div>
     </div>
     <div class="skill-category">
@@ -859,6 +1030,8 @@
         <span class="skill-item">Linux</span>
         <span class="skill-item">AWS (EC2, S3)</span>
         <span class="skill-item">GitHub Actions</span>
+        <span class="skill-item">Prometheus</span>
+        <span class="skill-item">Jupyter</span>
       </div>
     </div>
     <div class="skill-category">
@@ -869,6 +1042,7 @@
         <span class="skill-item">Quant Finance</span>
         <span class="skill-item">System Design</span>
         <span class="skill-item">Leadership</span>
+        <span class="skill-item">Problem Solving</span>
       </div>
     </div>
   </div>
@@ -876,14 +1050,22 @@
 
 <section class="container" id="achievements">
   <h2>Achievements & Awards</h2>
+  
   <div class="content-item">
     <h3>Hackathon Winner – TechFest 2024</h3>
     <p>Led a team of 4 to win 1st place by developing a real-time city pollution prediction model and visualization dashboard within 36 hours.</p>
   </div>
+  
   <div class="content-item">
     <h3>Smart India Ideathon – Finalist</h3>
     <p>Selected as a national finalist for proposing an innovative IoT-AI hybrid solution for decentralized energy grid monitoring.</p>
   </div>
+  
+  <div class="content-item">
+    <h3>Dean's List – All Semesters</h3>
+    <p>Achieved a GPA of 9.5+ in every semester, placing in the top 5% of the Computer Science department.</p>
+  </div>
+  
   <div class="content-item">
     <h3>Campus Tech Lead – Tech Developer Community</h3>
     <p>Led a campus community of 200+ members. Organized weekly workshops, mentored junior developers, and hosted a campus-wide hackathon.</p>
@@ -895,11 +1077,17 @@
     <div class="testimonial-grid">
         <div class="testimonial-card">
             <blockquote>"Tirth's automation script for our deployment pipeline was a game-changer. It saved our team 10+ hours a week and reduced human error significantly. His work is clean and well-documented."</blockquote>
-            <cite>– John Doe, Project Manager @ Zenn Tech</cite>
+            <div class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjU5NzV8&ixlib=rb-4.0.3&q=80&w=100" alt="John Doe Avatar">
+                <cite>John Doe <span>Project Manager @ Zenn Tech</span></cite>
+            </div>
         </div>
         <div class="testimonial-card">
             <blockquote>"I hired Tirth to build a custom financial analysis tool. His understanding of both Python and financial markets was impressive. He delivered a high-quality product ahead of schedule."</blockquote>
-            <cite>– Jane Smith, Freelance Client</cite>
+            <div class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfGFsbHx8fHx8fHx8fDE2OTk0NjYwMDN8&ixlib=rb-4.0.3&q=80&w=100" alt="Jane Smith Avatar">
+                <cite>Jane Smith <span>Freelance Client</span></cite>
+            </div>
         </div>
     </div>
 </section>
@@ -983,10 +1171,10 @@
 
     // --- 3. Active Nav Link Highlighting on Scroll ---
     const navItems = document.querySelectorAll('.nav-links a');
-    const allSections = document.querySelectorAll('section.container'); // Only target container sections
+    const allSections = document.querySelectorAll('section.container');
 
     window.addEventListener('scroll', () => {
-      let currentSectionId = 'intro'; // Default to intro
+      let currentSectionId = 'intro';
       
       allSections.forEach(section => {
         const sectionTop = section.offsetTop;
