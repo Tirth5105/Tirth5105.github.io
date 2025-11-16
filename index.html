@@ -4,257 +4,839 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tirth Patel • Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <style>
-    body {
-      margin: 0;
-      font-family: "Inter", sans-serif;
-      background: #0d0f16;
-      color: #e6e6e6;
+    /* --- 1. Root Variables (Theme) --- */
+    :root {
+      --bg-dark: #0d0f16;
+      --bg-card: #141720;
+      --bg-nav: rgba(20, 22, 30, 0.7);
+      --primary-blue: #7ab8ff;
+      --primary-blue-light: #4f92ff;
+      --text-light: #e6e6e6;
+      --text-med: #cfcfcf;
+      --text-dark: #a0a0a0;
+      --border-color: rgba(255, 255, 255, 0.07);
+      --shadow-color: rgba(0, 0, 0, 0.35);
     }
 
+    /* --- 2. Global Reset & Body --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--text-light);
+      font-weight: 700;
+    }
+
+    h1 { font-size: 3.5rem; }
+    h2 { font-size: 2.25rem; margin-bottom: 30px; color: var(--primary-blue); border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
+    h3 { font-size: 1.5rem; color: var(--text-light); margin-bottom: 8px; }
+    h4 { font-size: 1.1rem; color: var(--text-med); margin-bottom: 10px; font-weight: 500; }
+
+    p {
+      color: var(--text-med);
+      margin-bottom: 15px;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--primary-blue);
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--primary-blue-light);
+    }
+
+    ul {
+      list-style-type: none;
+      line-height: 1.8;
+      padding-left: 20px;
+    }
+
+    ul li {
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+    ul li::before {
+      content: '»';
+      position: absolute;
+      left: -20px;
+      color: var(--primary-blue);
+      font-weight: 700;
+    }
+
+    /* --- 3. Navigation Bar --- */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 60px;
-      background: rgba(20, 22, 30, 0.85);
+      background: var(--bg-nav);
       backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid var(--border-color);
+      width: 100%;
     }
 
     nav .logo {
-      font-size: 22px;
-      font-weight: 700;
-      color: #7ab8ff;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary-blue);
     }
 
-    nav a {
-      margin: 0 14px;
-      text-decoration: none;
-      color: #cfcfcf;
-      transition: 0.2s;
+    nav .nav-links {
+      display: flex;
     }
 
-    nav a:hover { color: #7ab8ff; }
+    nav .nav-links a {
+      margin: 0 16px;
+      color: var(--text-med);
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      padding: 5px 0;
+      border-bottom: 2px solid transparent;
+    }
 
+    nav .nav-links a:hover {
+      color: var(--primary-blue);
+    }
+
+    nav .nav-links a.active {
+      color: var(--primary-blue);
+      border-bottom-color: var(--primary-blue);
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      font-size: 24px;
+      color: var(--text-light);
+    }
+
+    /* --- 4. Main Section Container --- */
+    .container {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 45px;
+      background: var(--bg-card);
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 40px var(--shadow-color);
+      
+      /* --- DYNAMIC TRANSITION --- */
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    
+    /* --- FADE-IN ANIMATION CLASS --- */
+    .container.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- 5. Hero Section --- */
     .hero {
       display: flex;
-      padding: 120px 20px;
+      padding: 120px 60px;
       justify-content: center;
       align-items: center;
       gap: 80px;
       text-align: left;
+      min-height: 80vh;
+      background: none;
+      border: none;
+      box-shadow: none;
+      margin-top: 0;
     }
 
     .hero img {
-      width: 260px;
-      height: 260px;
-      border-radius: 22px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+      border: 5px solid var(--border-color);
+      box-shadow: 0 10px 40px var(--shadow-color);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    
+    .hero img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 40px rgba(122, 184, 255, 0.4);
     }
 
     .hero-text h1 {
-      font-size: 48px;
-      margin: 0;
+      font-weight: 800;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, var(--text-light), var(--primary-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text .subtitle {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--primary-blue);
+      margin-bottom: 20px;
+    }
+    
+    .hero-text .focus {
+        font-size: 1.1rem;
+        color: var(--text-dark);
+        font-weight: 500;
     }
 
     .btn-primary {
       display: inline-block;
-      padding: 12px 26px;
-      background: linear-gradient(135deg, #4f92ff, #7ab8ff);
+      padding: 14px 30px;
+      background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-blue));
       color: #000;
       border-radius: 12px;
-      margin-top: 20px;
+      margin-top: 30px;
       font-weight: 600;
       text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(79, 146, 255, 0.3);
     }
 
-    section {
-      max-width: 1000px;
-      margin: 40px auto;
-      background: #141720;
-      padding: 45px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.07);
-      box-shadow: 0 0 35px rgba(0,0,0,0.35);
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(79, 146, 255, 0.5);
     }
 
-    h2 { color: #7ab8ff; font-size: 28px; margin-top: 0; }
-
-    .project-block, .experience-item, .education-item, .achievement-item {
-      margin-bottom: 25px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+    /* --- 6. Content Sections (About, Education, etc.) --- */
+    .content-item {
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--border-color);
     }
 
-    .project-block:last-child,
-    .experience-item:last-child,
-    .education-item:last-child,
-    .achievement-item:last-child {
+    .content-item:last-child {
       border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    
+    .content-item h3 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .content-item h3 .date {
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--text-dark);
     }
 
-    ul { line-height: 1.7; }
+    /* --- 7. Projects Section (NEW GRID LAYOUT) --- */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 15px;
+      border: 1px solid var(--border-color);
+      padding: 25px;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 15px 30px var(--shadow-color);
+    }
+
+    .project-card h3 {
+      color: var(--primary-blue);
+    }
+    
+    .project-tags {
+        margin-top: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .project-tags .tag {
+        background: rgba(122, 184, 255, 0.1);
+        color: var(--primary-blue);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+    
+    .project-links {
+        margin-top: 20px;
+        display: flex;
+        gap: 15px;
+    }
+    
+    .project-links a {
+        color: var(--text-med);
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+    
+    .project-links a i {
+        margin-right: 6px;
+    }
+    
+    .project-links a:hover {
+        color: var(--primary-blue);
+    }
+
+    /* --- 8. Skills Section (NEW LAYOUT) --- */
+    .skill-categories {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+    
+    .skill-category h4 {
+        color: var(--text-light);
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 5px;
+    }
+    
+    .skill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    
+    .skill-list .skill-item {
+        background: var(--bg-dark);
+        color: var(--text-med);
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .skill-list .skill-item:hover {
+        background: var(--primary-blue);
+        color: var(--bg-dark);
+        transform: scale(1.05);
+    }
+
+    /* --- 9. Contact Section (NEW FORM & LINKS) --- */
+    .contact-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .contact-form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--text-med);
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        background: var(--bg-dark);
+        color: var(--text-light);
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+    
+    .contact-form textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+    
+    .btn-submit {
+        display: inline-block;
+        padding: 12px 26px;
+        background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-blue));
+        color: #000;
+        border-radius: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-submit:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 20px rgba(79, 146, 255, 0.4);
+    }
+    
+    .contact-info h3 {
+        margin-bottom: 20px;
+    }
+    
+    .contact-info p {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+    
+    .social-links {
+        display: flex;
+        gap: 20px;
+        margin-top: 25px;
+    }
+    
+    .social-links a {
+        font-size: 2rem;
+        color: var(--text-dark);
+        transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+        color: var(--primary-blue);
+        transform: scale(1.1);
+    }
+
+    /* --- 10. Footer --- */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 40px;
+      color: var(--text-dark);
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* --- 11. Responsive Design --- */
+    @media (max-width: 992px) {
+        .hero {
+            gap: 40px;
+        }
+        .hero img {
+            width: 240px;
+            height: 240px;
+        }
+        .hero-text h1 {
+            font-size: 2.8rem;
+        }
+        .hero-text .subtitle {
+            font-size: 1.25rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 20px 30px;
+        flex-wrap: wrap;
+      }
+      
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        background: var(--bg-card);
+        border-top: 1px solid var(--border-color);
+        margin-top: 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out;
+      }
+      
+      .nav-links.active {
+        display: flex;
+        max-height: 500px; /* Enable transition */
+      }
+
+      .nav-links a {
+        margin: 15px 0;
+        font-size: 1.1rem;
+      }
+
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 60px 30px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+
+      .container {
+        margin: 40px 20px;
+        padding: 30px;
+      }
+      
+      h2 {
+          font-size: 2rem;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .skill-categories {
+          grid-template-columns: 1fr;
+      }
+      
+      .contact-wrapper {
+          grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
 
 <nav>
   <div class="logo">Tirth Patel</div>
-  <div>
-    <a href="#intro">Intro</a>
-    <a href="#resume">Resume</a>
+  <div class="nav-links" id="nav-links">
+    <a href="#intro" class="active">Home</a>
+    <a href="#about">About</a>
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
-    <a href="#achievements">Achievements</a>
     <a href="#contact">Contact</a>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <i class="fas fa-bars"></i>
   </div>
 </nav>
 
-<section class="hero">
-  <img src="assets/profile.jpg" />
+<section class="hero container" id="intro">
   <div class="hero-text">
     <h1>Tirth Patel</h1>
-    <p>Computer Science Engineer • Tech Explorer • PDPU</p>
-    <p>Focused on AI, Blockchain, Quant Finance, System Design</p>
+    <p class="subtitle">Computer Science Engineer</p>
+    <p class="focus">Building scalable systems with a focus on AI, Blockchain, and Quantitative Finance.</p>
     <a class="btn-primary" href="#projects">Explore My Work</a>
   </div>
+  <img src="assets/profile.jpg" alt="Tirth Patel Profile Picture" />
 </section>
 
-<section id="intro">
-  <h2>Introduction</h2>
-  <p>I am a detail-oriented computer science student passionate about solving real-world problems using modern technologies. My interests span across AI, blockchain engineering, algorithmic trading, automation, and large-scale systems.</p>
-  <p>I believe in writing clean, efficient code and building meaningful products that create impact.</p>
+<section class="container" id="about">
+  <h2>About Me</h2>
+  <p>I am a detail-oriented computer science student at PDPU, passionate about solving complex real-world problems using modern technologies. My core interests lie at the intersection of several emerging fields, including **Artificial Intelligence**, **Blockchain Engineering**, **Algorithmic Trading**, and large-scale **System Design**.</p>
+  <p>I thrive in fast-paced environments where I can leverage my skills to write clean, efficient, and scalable code. My goal is to build meaningful products that create a tangible impact, whether it's optimizing a system for performance or architecting a new decentralized application from the ground up.</p>
 </section>
 
-<section id="resume">
-  <h2>Education</h2>
+<section class="container" id="education">
+  <h2>Education & Certifications</h2>
 
-  <div class="education-item">
-    <h3>B.Tech in Computer Science – PDPU</h3>
-    <p>2023–2027</p>
+  <div class="content-item">
+    <h3>B.Tech in Computer Science <span class="date">2023–2027</span></h3>
+    <h4>Pandit Deendayal Energy University (PDPU)</h4>
     <ul>
-      <li>Coursework: DSA, OS, DBMS, AI/ML, Distributed Systems</li>
-      <li>Learning advanced algorithms & architectures</li>
-      <li>Active in coding, projects, and hackathons</li>
+      <li>**Relevant Coursework:** Data Structures & Algorithms, Operating Systems, DBMS, AI/ML, Distributed Systems</li>
+      <li>Actively learning advanced algorithms, system architectures, and software engineering principles.</li>
+      <li>Consistent participant in hackathons, coding competitions, and technical workshops.</li>
     </ul>
   </div>
 
-  <div class="education-item">
+  <div class="content-item">
     <h3>Certifications</h3>
     <ul>
-      <li>Google IT Support</li>
-      <li>NPTEL Cloud Computing</li>
-      <li>NPTEL Programming in Python</li>
-      <li>Linux Essentials – Cisco</li>
+      <li>Google IT Support Professional Certificate</li>
+      <li>NPTEL Certification in Cloud Computing</li>
+      <li>NPTEL Certification in Programming in Python</li>
+      <li>Cisco Certified: Linux Essentials</li>
+      <li>DeepLearning.AI: AI for Everyone</li>
     </ul>
   </div>
 </section>
 
-<section id="experience">
+<section class="container" id="experience">
   <h2>Experience</h2>
 
-  <div class="experience-item">
-    <h3>Software Development Intern – XYZ Tech</h3>
-    <p>Worked on automation pipelines, API integrations, and building reusable components for internal dashboards.</p>
+  <div class="content-item">
+    <h3>Software Development Intern <span class="date">Summer 2025</span></h3>
+    <h4>XYZ Tech Solutions</h4>
+    <p>Worked with the platform engineering team on automation pipelines, API integrations, and building reusable components for internal dashboards using React and Node.js.</p>
     <ul>
-      <li>Developed REST APIs and optimized backend logic</li>
-      <li>Created automation workflows reducing manual work by 40%</li>
-      <li>Collaborated with UI/UX team to improve dashboard interfaces</li>
+      <li>Developed and documented 5 new REST API endpoints for a new microservice.</li>
+      <li>Created CI/CD automation workflows using GitHub Actions, reducing manual deployment work by 40%.</li>
+      <li>Optimized backend database queries, improving dashboard load times by 25%.</li>
+      <li>Collaborated with the UI/UX team to refactor and improve frontend dashboard interfaces.</li>
     </ul>
   </div>
 
-  <div class="experience-item">
-    <h3>Freelance Developer</h3>
-    <p>Designed web tools, dashboards and automated scripts for small businesses.</p>
+  <div class="content-item">
+    <h3>Freelance Developer <span class="date">2024–Present</span></h3>
+    <h4>Self-Employed</h4>
+    <p>Designed and built custom web tools, analytics dashboards, and automated scripts for small businesses and individual clients.</p>
     <ul>
-      <li>Built custom analytics dashboards</li>
-      <li>Developed financial analysis tools for traders</li>
-      <li>Created website templates for startups</li>
+      <li>Built custom analytics dashboards with Chart.js to help clients visualize business KPIs.</li>
+      <li>Developed Python-based financial analysis tools for traders, integrating with various exchange APIs.</li>
+      <li>Created responsive website templates and components for early-stage startups.</li>
     </ul>
   </div>
 </section>
 
-<section id="projects">
+<section class="container" id="projects">
   <h2>Projects</h2>
+  <div class="project-grid">
 
-  <div class="project-block">
-    <h3>AI Energy Optimizer</h3>
-    <p>An ML-powered IoT model predicting and reducing energy usage by 18%.</p>
-    <ul>
-      <li>Trained models on live sensor data</li>
-      <li>Built dashboard for real-time insights</li>
-      <li>Integrated predictive alerts</li>
-    </ul>
-  </div>
+    <div class="project-card">
+      <h3>AI Energy Optimizer</h3>
+      <p>An ML-powered IoT model that predicts and reduces building energy usage, achieving an 18% reduction in test environments.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">TensorFlow</span>
+        <span class="tag">IoT</span>
+        <span class="tag">Flask</span>
+        <span class="tag">MQTT</span>
+      </div>
+      <div class="project-links">
+        <a href="#"><i class="fab fa-github"></i> View Code</a>
+        <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+      </div>
+    </div>
 
-  <div class="project-block">
-    <h3>Blockchain Academic Ledger</h3>
-    <p>A decentralized academic certificate validation system.</p>
-    <ul>
-      <li>Implemented Solidity smart contracts</li>
-      <li>Created immutable storage for records</li>
-      <li>Designed student-admin verification app</li>
-    </ul>
-  </div>
+    <div class="project-card">
+      <h3>Blockchain Academic Ledger</h3>
+      <p>A decentralized application (dApp) for validating and storing academic certificates immutably on the blockchain.</p>
+      <div class="project-tags">
+        <span class="tag">Solidity</span>
+        <span class="tag">Hardhat</span>
+        <span class="tag">React</span>
+        <span class="tag">Ethers.js</span>
+        <span class="tag">IPFS</span>
+      </div>
+      <div class="project-links">
+        <a href="#"><i class="fab fa-github"></i> View Code</a>
+      </div>
+    </div>
 
-  <div class="project-block">
-    <h3>Algo Trading Backtester</h3>
-    <p>A Python engine for testing trading strategies.</p>
-    <ul>
-      <li>Integrated indicators (RSI, MACD, VWAP)</li>
-      <li>Built custom backtest visualizer</li>
-      <li>Supports multi-stock comparison</li>
-    </ul>
-  </div>
-
-  <div class="project-block">
-    <h3>Smart Queue Manager</h3>
-    <p>Hospital queue prediction system reducing wait times by 30%.</p>
+    <div class="project-card">
+      <h3>Algo Trading Backtester</h3>
+      <p>A high-performance Python engine for backtesting and visualizing quantitative trading strategies against historical market data.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">Plotly</span>
+      </div>
+      <div class="project-links">
+        <a href="#"><i class="fab fa-github"></i> View Code</a>
+      </div>
+    </div>
+    
+    <div class="project-card">
+      <h3>Smart Queue Manager</h3>
+      <p>A hospital queue prediction system using regression models to forecast wait times, reducing average patient wait times by 30% in simulation.</p>
+      <div class="project-tags">
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">Python</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">React</span>
+      </div>
+      <div class="project-links">
+        <a href="#"><i class="fab fa-github"></i> View Code</a>
+      </div>
+    </div>
+    
   </div>
 </section>
 
-<section id="skills">
-  <h2>Skills</h2>
-  <ul>
-    <li><strong>Programming:</strong> C, Java, Python, SQL, JavaScript</li>
-    <li><strong>Tools:</strong> Git, Docker, Linux, Figma</li>
-    <li><strong>Domains:</strong> AI, Blockchain, Quant Finance</li>
-    <li><strong>Soft Skills:</strong> Leadership, Communication, teamwork</li>
-  </ul>
+<section class="container" id="skills">
+  <h2>Technical Skills</h2>
+  <div class="skill-categories">
+    <div class="skill-category">
+      <h4>Programming & Databases</h4>
+      <div class="skill-list">
+        <span class="skill-item">Python</span>
+        <span class="skill-item">Java</span>
+        <span class="skill-item">JavaScript (ES6+)</span>
+        <span class="skill-item">C/C++</span>
+        <span class="skill-item">Solidity</span>
+        <span class="skill-item">SQL (PostgreSQL)</span>
+        <span class="skill-item">MongoDB</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <h4>Frameworks & Libraries</h4>
+      <div class="skill-list">
+        <span class="skill-item">React</span>
+        <span class="skill-item">Node.js</span>
+        <span class="skill-item">TensorFlow</span>
+        <span class="skill-item">Pandas</span>
+        <span class="skill-item">Ethers.js</span>
+        <span class="skill-item">Hardhat</span>
+        <span class="skill-item">Flask</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <h4>Tools & Platforms</h4>
+      <div class="skill-list">
+        <span class="skill-item">Git & GitHub</span>
+        <span class="skill-item">Docker</span>
+        <span class="skill-item">Linux</span>
+        <span class="skill-item">AWS (EC2, S3)</span>
+        <span class="skill-item">GitHub Actions</span>
+        <span class="skill-item">Figma</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <h4>Domains & Soft Skills</h4>
+      <div class="skill-list">
+        <span class="skill-item">AI/Machine Learning</span>
+        <span class="skill-item">Blockchain</span>
+        <span class="skill-item">Quant Finance</span>
+        <span class="skill-item">System Design</span>
+        <span class="skill-item">Leadership</span>
+        <span class="skill-item">Communication</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="achievements">
+<section class="container" id="achievements">
   <h2>Achievements & Awards</h2>
 
-  <div class="achievement-item">
-    <h3>Hackathon Winner – 2024</h3>
-    <p>Developed a real-time city pollution predictor.</p>
+  <div class="content-item">
+    <h3>Hackathon Winner – TechFest 2024</h3>
+    <p>Led a team of 4 to win 1st place by developing a real-time city pollution prediction model and visualization dashboard within 36 hours.</p>
   </div>
 
-  <div class="achievement-item">
+  <div class="content-item">
     <h3>Smart India Ideathon – Finalist</h3>
-    <p>Presented an IoT-AI hybrid solution for energy monitoring.</p>
+    <p>Selected as a national finalist for proposing an innovative IoT-AI hybrid solution for decentralized energy grid monitoring.</p>
   </div>
 
-  <div class="achievement-item">
-    <h3>Campus Tech Lead</h3>
-    <p>Led events, mentored juniors, and organized workshops.</p>
+  <div class="content-item">
+    <h3>Campus Tech Lead – XYZ Developer Community</h3>
+    <p>Led a campus community of 200+ members. Organized weekly workshops, mentored junior developers, and hosted a campus-wide hackathon.</p>
   </div>
 </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: tirth7770@gmail.com</p>
-  <p>Phone: 7573011157</p>
+<section class="container" id="contact">
+  <h2>Get In Touch</h2>
+  <div class="contact-wrapper">
+    <div class="contact-info">
+        <h3>Let's Connect</h3>
+        <p>I'm currently seeking internship opportunities and am open to new collaborations. Feel free to reach out via email, phone, or my social links.</p>
+        <p>
+            <strong>Email:</strong> tirth7770@gmail.com<br>
+            <strong>Phone:</strong> +91 75730 11157
+        </p>
+        <div class="social-links">
+            <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank" title="Twitter/X"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+    <form classcom="contact-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+        
+        <button type="submit" class="btn-submit">Send Message</button>
+    </form>
+  </div>
 </section>
+
+<footer>
+  <p>&copy; 2025 Tirth Patel. Built with HTML, CSS, and JavaScript.</p>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    // --- 1. Mobile Menu Toggle ---
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // --- 2. Dynamic Fade-in on Scroll ---
+    const sections = document.querySelectorAll('.container');
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const sectionObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // We can unobserve it if we only want the animation once
+          // observer.unobserve(entry.target);
+        } else {
+            // Add this if you want the animation to re-trigger
+            // entry.target.classList.remove('visible');
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      sectionObserver.observe(section);
+    });
+
+    // --- 3. Active Nav Link Highlighting on Scroll ---
+    const navItems = document.querySelectorAll('.nav-links a');
+    const allSections = document.querySelectorAll('section[id]');
+
+    window.addEventListener('scroll', () => {
+      let currentSectionId = '';
+      
+      allSections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        // Check if scroll is within this section
+        if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+          currentSectionId = section.getAttribute('id');
+        }
+      });
+
+      navItems.forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === `#${currentSectionId}`) {
+          a.classList.add('active');
+        }
+      });
+    });
+
+  });
+</script>
 
 </body>
 </html>
